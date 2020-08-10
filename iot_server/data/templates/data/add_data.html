@@ -6,7 +6,7 @@
     <meta name="description" content="adding data to server">
     <meta name="viewport" content="width = device-width,initial-scale=1">
     <!--css here-->
-</head>>
+</head>
 <body>
 <h3 style="text-align: center; color:aqua;background-color: black;height:60px;margin-top: 50px;font-size: 50px;">Adding Data On This Page</h3>
 
@@ -16,16 +16,16 @@
 <hr>
 <form method="POST" action="{% url 'add_data' %}">
     {% csrf_token %}
-    Humidity:<br>
+    Humidity:<br><br>
     <input type="number" name="humidity"/>
-    <br>
-    Temp:<br>
+    <br><br>
+    Temp:<br><br>
     <input type="number" name="temp"/>
-    <br>
-    Tozih:<br>
+    <br><br>
+    Tozih:<br><br>
     <input type="text" name="tozih"/>
-    <br>
-    <input type="submit" value="send data">
+    <br><br>
+    <input type="submit" value="send data"><br>
     
 
 </form>

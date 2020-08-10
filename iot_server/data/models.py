@@ -15,8 +15,8 @@ class Data(models.Model):
     def __str__(self):
         return self.tozih
 
-    def was_published_recently(self):
-        return self.date >= timezone.now() - datetime.timedelta(days=1)
+    '''def was_published_recently(self):
+        return self.date >= timezone.now() - datetime.timedelta(days=1)'''
 
 
 

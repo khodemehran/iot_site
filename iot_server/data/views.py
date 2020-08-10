@@ -2,10 +2,24 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Data
 from django.utils import timezone
+from django.db.models import Avg
 
 def home(request):
     all_data = Data.objects.order_by('-date')
-    return render(request, 'data/home.html',{'all_data':all_data})
+    Temp_Avg = Data.objects.aggregate(Avg('temp'))
+    Temp_Avg = Temp_Avg["temp__avg"] 
+    Humidity_Avg = Data.objects.aggregate(Avg('humidity'))
+    Humidity_Avg = Humidity_Avg["humidity__avg"]
+    last_pk = all_data.count()
+
+    context = {
+        'all_data':all_data,
+        'Temp_Avg':Temp_Avg,
+        'Humidity_Avg':Humidity_Avg,
+        'last_pk':last_pk,
+        }
+
+    return render(request, 'data/home.html',context)
 
 
 
