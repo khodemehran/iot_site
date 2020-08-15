@@ -37,4 +37,3 @@ def add_data(request):
         return render(request, 'data/add_data.html')
 
         
-        
