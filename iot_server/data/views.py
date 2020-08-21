@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Data
 from django.utils import timezone
 from django.db.models import Avg
 
 def home(request):
-    all_data = Data.objects.order_by('-date')
+    all_data = Data.objects.order_by('-create_date')
     Temp_Avg = Data.objects.aggregate(Avg('temp'))
     Temp_Avg = Temp_Avg["temp__avg"] 
     Humidity_Avg = Data.objects.aggregate(Avg('humidity'))
@@ -30,9 +30,9 @@ def add_data(request):
             data.humidity = request.POST['humidity']
             data.temp = request.POST['temp']
             data.tozih = request.POST['tozih']
-            data.date = timezone.datetime.now()
+            data.create_date = timezone.datetime.now()
             data.save()
-            return render(request,'data/home.html')
+            return redirect('home')
     else:
         return render(request, 'data/add_data.html')
 

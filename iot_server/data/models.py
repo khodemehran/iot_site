@@ -7,8 +7,10 @@ class Data(models.Model):
 
     humidity = models.FloatField(max_length=3)
     temp = models.FloatField(max_length=3)
-    date = models.DateTimeField()
+    create_date = models.DateTimeField(auto_now_add=True)
+    update_date = models.DateTimeField(auto_now=True)
     tozih = models.CharField(max_length=300)
+
 
 
 
