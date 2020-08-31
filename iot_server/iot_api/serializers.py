@@ -6,4 +6,4 @@ class Dataserializer(serializers.ModelSerializer):
 
     class Meta:
         model = Data
-        fields = ('id','humidity', 'temp', 'create_data','tozih',)
+        fields = ('id','humidity','temp','tozih','created_at')

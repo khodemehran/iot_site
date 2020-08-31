@@ -5,7 +5,7 @@ from django.utils import timezone
 from django.db.models import Avg
 
 def home(request):
-    all_data = Data.objects.order_by('-create_date')
+    all_data = Data.objects.order_by('-created_at')
     Temp_Avg = Data.objects.aggregate(Avg('temp'))
     Temp_Avg = Temp_Avg["temp__avg"] 
     Humidity_Avg = Data.objects.aggregate(Avg('humidity'))
@@ -30,7 +30,7 @@ def add_data(request):
             data.humidity = request.POST['humidity']
             data.temp = request.POST['temp']
             data.tozih = request.POST['tozih']
-            data.create_date = timezone.datetime.now()
+            #data.create_date = timezone.datetime.now()
             data.save()
             return redirect('home')
     else:

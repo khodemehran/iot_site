@@ -4,13 +4,13 @@ from rest_framework import generics
 from data.models import Data
 from .serializers import Dataserializer
 # Create your views here.
-class List_Data(generics.ListAPIView):
+class List_Data(generics.ListCreateAPIView):
 
     queryset = Data.objects.all()
     serializer_class = Dataserializer
 
 
-class Detail_Data(generics.RetrieveAPIView):
+class Detail_Data(generics.RetrieveUpdateDestroyAPIView):
     
     queryset = Data.objects.all()
     serializer_class = Dataserializer
