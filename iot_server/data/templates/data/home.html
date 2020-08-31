@@ -1,16 +1,56 @@
-<div style="max-width: 100%; height:30%;background-color: burlywood;"><h2 style="text-align: center; font-size: 60px;font-family: monospace;">iot-server-data</h2></div>
-<hr>
-
-<div style="max-width:100% ; background-color: lightgray;height: 300px; text-align: center;"><h1 style="padding-top: 25px;">{{ Humidity_Avg }} avrage humidity on {{ last_pk }} information that where given.</h1>
-<h1 style="padding: 25px;">{{ Temp_Avg }} avrage Temp on {{ last_pk }} information that where given.</h1>
+<html>
+<head>
+    <style>
+        table {
+          float:left;  
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 70%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+    <title>iot server</title>
+    <div style="max-width: 100%; height:30%;background-color: burlywood;"><h2 style="text-align: center; font-size: 60px;font-family: monospace;">iot-server-data</h2></div>
+    <div style="max-width:100% ; background-color: lightgray;height: 300px; text-align: center;"><h1 style="padding-top: 25px;">{{ Humidity_Avg }} avrage humidity on {{ last_pk }} information that where given.</h1>
+    <h1 style="padding: 25px;">{{ Temp_Avg }} avrage Temp on {{ last_pk }} information that where given.</h1>
+</head>
+<body>
 </div>
 {% if add_data_sec %}
     {{ add_data_sec }}
 {% endif %}
+
 {% for data in all_data.all %}
 
-<div style="width: 80%;text-align: center;margin: auto;">
-<h4>{{ data.pk }}</h4> 
+<!--<div style="width: 80%;text-align: center;margin: auto;">-->
+    <table>
+        <tr>
+          <th>Humidity</th>
+          <th>Temp</th>
+          <th>ID</th>
+          <th>create</th>
+          <th>update</th>
+        </tr>
+        <tr>
+          <td>{{ data.humidity }}</td>
+          <td>{{ data.temp }}</td>
+          <td>{{ data.pk }}</td>
+          <td>{{ data.created_at }}</td>
+          <td>{{ data.updated_at }}</td>
+        </tr>
+    </table>
+
+
+<!--<h4>{{ data.pk }}</h4> 
       <p>data humidity:{{ data.humidity }}</p>
 </br>
 
@@ -24,6 +64,10 @@
 </br>
 <hr>
 </div>
+-->
 
 
 {% endfor %}
+
+</body>
+</html>
