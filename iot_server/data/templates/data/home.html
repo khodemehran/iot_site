@@ -1,11 +1,18 @@
+{% load static %}
 <html>
 <head>
-    <style>
-        table {
+  <meta  charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'data/style.css' %}">
+    <!--<style>
+         p,h1,h2{
+           font-family: Arial;
+         }
+          table {
           float:left;  
           font-family: arial, sans-serif;
           border-collapse: collapse;
-          width: 70%;
+          width: 100%;
         }
         
         td, th {
@@ -17,22 +24,63 @@
         tr:nth-child(even) {
           background-color: #dddddd;
         }
-        </style>
+        </style>-->
     <title>iot server</title>
-    <div style="max-width: 100%; height:30%;background-color: burlywood;"><h2 style="text-align: center; font-size: 60px;font-family: monospace;">iot-server-data</h2></div>
-    <div style="max-width:100% ; background-color: lightgray;height: 300px; text-align: center;"><h1 style="padding-top: 25px;">{{ Humidity_Avg }} avrage humidity on {{ last_pk }} information that where given.</h1>
-    <h1 style="padding: 25px;">{{ Temp_Avg }} avrage Temp on {{ last_pk }} information that where given.</h1>
+    <!--<div  class="head" ><h2 style="text-align: center; font-size: 60px;">iot-server-data</h2></div>-->
+
 </head>
 <body>
-</div>
+  <div class="container">
+		<div class="navbar">
+			<ul class="menu">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Contact</a></li>
+				<li><a href="#">News</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </div>
+    <div class="banner">
+			<div class="app-text">
+				<h2>
+					IKIU INTERNET OF THING TEAM.
+				</h2>
+
+				<p>
+					Suppose the result of an experiment has the property A.</br> We now ask for the probability that it also has the property B, i.e.,</br> the probability of B under the condition A. We deﬁne this conditional probabilityas.</br>
+				</p>
+			</div>
+    </div>
+  </div>
+
 {% if add_data_sec %}
     {{ add_data_sec }}
 {% endif %}
+<h2>Last 3 data</h2>
+{% for last in Last_data|slice:":3" %}
+<table class="last-data">
+  <tr>
+    <th>Last Humidity</th>
+    <th>Last Temp</th>
+    <th>ID</th>
+    <th>create</th>
+    <th>update</th>
+  </tr>
+  <tr>
+    <td>{{ last.humidity }}</td>
+    <td>{{ last.temp }}</td>
+    <td>{{ last.pk }}</td>
+    <td>{{ last.created_at }}</td>
+    <td>{{ last.updated_at }}</td>
+  </tr>
+</table>
 
+{% endfor %}
+<h2>All data</h2>
 {% for data in all_data.all %}
 
+
 <!--<div style="width: 80%;text-align: center;margin: auto;">-->
-    <table>
+    <table class="all-data">
         <tr>
           <th>Humidity</th>
           <th>Temp</th>
@@ -48,6 +96,7 @@
           <td>{{ data.updated_at }}</td>
         </tr>
     </table>
+
 
 
 <!--<h4>{{ data.pk }}</h4> 
@@ -69,5 +118,20 @@
 
 {% endfor %}
 
+<!--<h1 style="margin: auto;">{{ Humidity_Avg }} avrage humidity on {{ last_pk }} information that where given.</h1>
+<h1 style="margin: auto;">{{ Temp_Avg }} avrage Temp on {{ last_pk }} information that where given.</h1>-->
+
+<table class="avrage-data">
+  <tr>
+    <th>avrage Humidity</th>
+    <th>avrage Temp</th>
+    <th>Total info</th>
+  </tr>
+  <tr>
+    <td>{{ Humidity_Avg }}</td>
+    <td>{{ Temp_Avg }}</td>
+    <td>{{ last_pk }}</td>
+  </tr>
+</table>
 </body>
 </html>

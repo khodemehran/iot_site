@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'corsheaders',
     #local 
     'data',
-    'iot_api', 
+    'iot_api',
+    'weather_app' 
 ]
 REST_FRAMEWORK = {
 'DEFAULT_PERMISSION_CLASSES': [
