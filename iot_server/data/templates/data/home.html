@@ -1,9 +1,12 @@
-{% load static %}
+
 <html>
 <head>
   <meta  charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="{% static 'data/style.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>-->
     <!--<style>
          p,h1,h2{
            font-family: Arial;
@@ -55,47 +58,52 @@
 {% if add_data_sec %}
     {{ add_data_sec }}
 {% endif %}
-<h2>Last 3 data</h2>
-{% for last in Last_data|slice:":3" %}
-<table class="last-data">
-  <tr>
-    <th>Last Humidity</th>
-    <th>Last Temp</th>
-    <th>ID</th>
-    <th>create</th>
-    <th>update</th>
-  </tr>
-  <tr>
-    <td>{{ last.humidity }}</td>
-    <td>{{ last.temp }}</td>
-    <td>{{ last.pk }}</td>
-    <td>{{ last.created_at }}</td>
-    <td>{{ last.updated_at }}</td>
-  </tr>
-</table>
 
-{% endfor %}
-<h2>All data</h2>
-{% for data in all_data.all %}
+  <h2>Last 3 data</h2>
+  {% for last in Last_data|slice:":3" %}
+  <table class="last-data">
+    <tr>
+      <th>Last Humidity</th>
+      <th>Last Temp</th>
+      <th>ID</th>
+      <th>create</th>
+      <th>update</th>
+    </tr>
+    <tr>
+      <td>{{ last.humidity }}</td>
+      <td>{{ last.temp }}</td>
+      <td>{{ last.pk }}</td>
+      <td>{{ last.created_at }}</td>
+      <td>{{ last.updated_at }}</td>
+    </tr>
+  </table>
+</div>
+
+  {% endfor %}
+  <h2>All data</h2>
+  {% for data in all_data.all %}
 
 
-<!--<div style="width: 80%;text-align: center;margin: auto;">-->
-    <table class="all-data">
-        <tr>
-          <th>Humidity</th>
-          <th>Temp</th>
-          <th>ID</th>
-          <th>create</th>
-          <th>update</th>
-        </tr>
-        <tr>
-          <td>{{ data.humidity }}</td>
-          <td>{{ data.temp }}</td>
-          <td>{{ data.pk }}</td>
-          <td>{{ data.created_at }}</td>
-          <td>{{ data.updated_at }}</td>
-        </tr>
-    </table>
+  <!--<div style="width: 80%;text-align: center;margin: auto;">-->
+      <table class="all-data">
+          <tr>
+            <th>Humidity</th>
+            <th>author</th>
+            <th>Temp</th>
+            <th>ID</th>
+            <th>create</th>
+            <th>update</th>
+          </tr>
+          <tr>
+            <td>{{ data.humidity }}</td>
+            <td>{{ data.author }}</td>
+            <td>{{ data.temp }}</td>
+            <td>{{ data.pk }}</td>
+            <td>{{ data.created_at }}</td>
+            <td>{{ data.updated_at }}</td>
+          </tr>
+      </table>
+
 
 
 
@@ -118,20 +126,21 @@
 
 {% endfor %}
 
+
 <!--<h1 style="margin: auto;">{{ Humidity_Avg }} avrage humidity on {{ last_pk }} information that where given.</h1>
 <h1 style="margin: auto;">{{ Temp_Avg }} avrage Temp on {{ last_pk }} information that where given.</h1>-->
-
-<table class="avrage-data">
-  <tr>
-    <th>avrage Humidity</th>
-    <th>avrage Temp</th>
-    <th>Total info</th>
-  </tr>
-  <tr>
-    <td>{{ Humidity_Avg }}</td>
-    <td>{{ Temp_Avg }}</td>
-    <td>{{ last_pk }}</td>
-  </tr>
-</table>
+  <table class="avrage-data">
+    <tr>
+      <th>avrage Humidity</th>
+      <th>avrage Temp</th>
+      <th>Total info</th>
+    </tr>
+    <tr>
+      <td>{{ Humidity_Avg|floatformat }}</td>
+      <td>{{ Temp_Avg|floatformat }}</td>
+      <td>{{ last_pk|floatformat }}</td>
+    </tr>
+  </table>
+</div>
 </body>
 </html>

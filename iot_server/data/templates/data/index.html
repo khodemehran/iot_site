@@ -1,0 +1,127 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'data/style.css' %}">
+
+    <title>IOT Server</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template 
+    <link href="/style.css" rel="stylesheet">-->
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand"><a href="#">Cover</a></h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link" href="#">Contact</a>
+          </nav>
+        </div>
+      </header>
+      {% if add_data_sec %}
+            {{ add_data_sec }}
+      {% endif %}
+
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">Last 3 data</h1>
+        {% for last in Last_data|slice:":3" %}
+        <div class="container">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Last Humidity</th>
+                <th scope="col">Last Temp</th>
+                <th scope="col">ID</th>
+                <th scope="col">create</th>
+                <th scope="col">update</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">{{ data.pk }}</th>
+                <td>{{ last.humidity }}</td>
+                <td>{{ last.temp }}</td>
+                <td>{{ last.pk }}</td>
+                <td>{{ last.created_at }}</td>
+                <td>{{ last.updated_at }}</td>
+              </tr>
+            </tbody>
+          </table>
+          {% endfor %}
+
+        <h1 class="cover-heading">All Data</h1>
+        {% for data in all_data.all %}
+          <table>
+            <thead>
+            <tr>
+              <th scope="col"> Humidity </th>
+              <th scope="col"> Temp </th>
+              <th scope="col"> ID </th>
+              <th scope="col"> create </th>
+              <th scope="col"> update </th>
+
+            </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">{{ data.pk }}</th>
+                <td>{{ data.humidity }}</td>
+                <td>{{ data.temp }}</td>
+                <td>{{ data.pk }}</td>
+                <td>{{ data.created_at }}</td>
+                <td>{{ data.updated_at }}</td>
+
+              </tr>
+            </tbody>
+
+          </table>
+        {% endfor %}
+
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">avrage Humidity</th>
+            <th scope="col">avrage Temp</th>
+            <th scope="col">Total info</th>
+          </tr>
+        </thead>
+          <tr>
+            <td>{{ Humidity_Avg|floatformat }}</td>
+            <td>{{ Temp_Avg|floatformat }}</td>
+            <td>{{ last_pk|floatformat }}</td>
+          </tr>
+        </table>
+      </div>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

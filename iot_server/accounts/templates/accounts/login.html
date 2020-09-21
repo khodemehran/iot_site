@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Data</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+</head>
+<body>
+<h1>Login</h1>
+{% if error %}
+
+{{ error }}
+{% endif %}
+<br/>
+<form method="POST" action="{% url 'login' %}"class="form-control-sm">
+  <div class="form-row">
+    {% csrf_token %}
+    {% if request.GET.next %}
+    <input type="hidden" name='next' value={{ request.GET.next }}>
+
+    {% endif %}
+    
+      <div class="col-4">
+      <label for="exampleInputEmail1">User Name</label>
+      <input type="username" class="form-control" id="username1" aria-describedby="emailHelp" placeholder="Enter Username" name="username">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your informations with anyone else.</small>
+      </div>
+    
+      <div class="col-4">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+      </div>
+  </div>
+  <button type="submit" class="btn btn-outline-primary btn-sm">Submit</button>
+  </form>
+
+
+  
+  </body>
+  </html>
