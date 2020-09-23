@@ -60,7 +60,7 @@ def index(request):
 
 
 
-    return render(request, 'weather_app/index.html',context)
+    return render(request, 'weather_app/weather.html',context)
 
 @login_required
 def delete_city(request,city_name):

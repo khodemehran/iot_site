@@ -1,0 +1,72 @@
+/*
+ * Globals
+ */
+
+/* Links */
+a:hover{
+  color:white;
+
+}
+/* Custom default button */
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #fff;
+  border: .05rem solid #fff;
+}
+
+
+/*
+ * Base structure
+ */
+
+
+body {
+  height: 100%;
+  background-color:white !important;
+}
+
+
+/*
+ * Header
+ */
+.masthead {
+  margin-bottom: 2rem;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+}
+
+
+/*
+ * Footer
+ */
+.mastfoot {
+  color: rgba(255, 255, 255, .5);
+}
+@media (min-width: 1200px) {
+  .container{
+      max-width: 970px;
+  }
+}
+a:hover {
+  color:rgb(255,255,255,0.6) !important;
+}
+.navbar-nav > li{
+  padding-left:1px;
+  padding-right:1px;
+}
+
+.navbar-brand {
+  margin-left:200px ;
+}
+
+.container {
+  margin-top: 25px;
+}
+#sticky-footer {
+  flex-shrink: none;
+}

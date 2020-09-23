@@ -4,20 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>What's the weather like?</title>
+    <title>I Can Forecast The Weahter! </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <style>
+        a:hover{
+            color:rgb(255,255,255,0.6) !important;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <section class="hero is-primary">
+    <section class="hero bg-dark" >
         <div class="hero-body">
             <div class="container">
-                <h1 class="title">
+                <div class="row">
+                    <div class="col-sm">
+                <h1 class="title text-white" style="border-left: 3px solid #008B8B; padding-left:10px;">
                     Weahter App
                 </h1>
+                <small class="text-white-50 ml-1"> just add your city to see what happen!</small>
+                    </div>
+                    <div class="col-sm">
+
+                    </div>
+                    <div class="col-sm"><a style="margin-right: 10px;color:white" href="{% url 'home' %}">Home</a> <a style="color:white " href="{% url 'home' %}">About</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
     <section class="section">
         <div class="container">
             <div class="columns">
@@ -70,10 +87,11 @@
             </div>
         </div>
     </section>
-    
+    <footer id="sticky-footer" class="fixed-bottom py-4 bg-dark text-white-50">
+        <div class="container text-center">
+          <small>Copyright &copy;  IOT IKIU</small>
+        </div>
+    </footer>
 
-
-<footer class="footer">       
-</footer>
 </body>
 </html>

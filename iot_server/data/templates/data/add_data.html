@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
 </head>
 <body>
-    <section class="hero is-primary">
+    <section class="hero bg-dark">
         <div class="hero-body">
             <div class="container">
-                <h1 class="title">
+                <h1 class="title text-white">
                     Add Data To This Page
                 </h1>
             </div>
@@ -22,12 +22,25 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-offset-4 is-4">
-                    
-                    <form method="POST" action="{% url 'add_data' %}">
+                    <form class="border border-light p-5" method="POST" action="{% url 'add_data' %}">
                         {% csrf_token %}
+                        <p class="h4 mb-4 text-center">Save Me</p>
+                    
+                    
+                                        <input type="number" id="defaultSaveFormFirstName" class="form-control" placeholder="humidity" name="humidity">
+                    
+                                        <input type="number" id="defaultSaveFormLastName" class="form-control" placeholder="temp" name="temp">
+                    
+                                        <textarea class="form-control rounded-0" id="exampleFormControlTextareaSave" rows="3" placeholder="Message" name="tozih"></textarea>
+                    
+                        <button class="btn btn-info btn-block" type="submit">Save</button>
+                    </form>
+                    
+                    <!--<form method="POST" >
+                        
                         <div class="field has-addons">
                             
-                        Humidity:<br>
+                        Humidity:
                         <input type="number" name="humidity"/>
                         <br>
                      
@@ -39,18 +52,19 @@
                         <br><br>
                         <input type="submit" value="send data">
                         </div>
-                    </form>
+                    </form>-->
                 </div>
             </div>
         </div>
     </section>
-                        
+    <footer id="sticky-footer" class="fixed-bottom py-4 bg-dark text-white-50">
+        <div class="container text-center">
+          <small>Copyright &copy;  IOT IKIU</small>
+        </div>
+      </footer>                   
 
     
 
-<footer class="footer">
-
-</footer>
 </body>
 
 </html>

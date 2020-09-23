@@ -54,7 +54,7 @@ def add_data(request):
                 'temp_report':temp_report,
             }
             data.save()
-            return render(request, 'data/index.html', context)
+            return redirect('home')
     else:
         return render(request, 'data/add_data.html')
 
